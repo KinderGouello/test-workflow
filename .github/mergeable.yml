@@ -1,7 +1,10 @@
 version: 2
 mergeable:
-  - when: issues.opened, pull_request.opened
+  - when: issues.opened
     validate:
+      - do: label
+        must_not_include:
+          regex: bug|enhancement
     pass:
       - do: comment
         payload:
