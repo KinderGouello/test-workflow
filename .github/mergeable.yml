@@ -1,17 +1,8 @@
 version: 2
 mergeable:
-  - when: issues.opened
-    validate:
-      - do: title
-        begins_with:
-          match: ['AUTH', 'SOCIAL', 'CORE']
-      - do: label
-        must_include:
-          regex: bug|enhancement
-    fail:
+  - when: issues.opened, pull_request.opened
+    pass:
       - do: comment
         payload:
           body: >
-            The following problems were found with this issue:
-              - Title must begin with `AUTH`, `SOCIAL` or `CORE`
-              - The issue should either be labeled `bug` or `enhancement`
+            This is the first comment !
