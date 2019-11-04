@@ -3,8 +3,8 @@ mergeable:
   - when: issues.opened
     validate:
       - do: label
-        must_not_include:
-          regex: bug|enhancement
+        must_exclude:
+          regex: bug
     pass:
       - do: comment
         payload:
