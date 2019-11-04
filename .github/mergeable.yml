@@ -10,3 +10,12 @@ mergeable:
         payload:
           body: >
             This is the first comment !
+  - when: schedule.repository
+    validate:
+      - do: stale
+        days: 1
+        type: pull_request, issues
+    pass:
+      - do: comment
+        payload:
+          body: This is old. Is it still relevant?
